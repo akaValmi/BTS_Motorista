@@ -25,23 +25,26 @@ renderizarEntregas();
             ordenesPendientes.push(element);        
     }
     });
+    
     document.getElementById('pendientes').innerHTML='';
     ordenesPendientes.forEach((entrega, id) => {
-        let productos='';
-        /*    entrega.productos.forEach((producto, i) => {
+      entregas.forEach(element => {
+        if (element._id === entrega._id ) {    
+          let productos='';
+           element.productos.forEach((producto, i) => {
                 if (i>0) {
                     productos += ", "
                 }
-                productos += producto.valor+" "+producto.producto.nombreProducto;
-            });*/
+                productos += producto.cantidad+" "+producto.nombreProducto;
+            });
     document.getElementById('pendientes').innerHTML += 
     `<div type="button" class="contentEntregas">
         <div class="tituloEntregas">Entrega</div>
         <div class="entrega">
             <div class="infoEntrega">
                 <p>Productos: ${productos} </p>
-                <p>Direccion: ${entrega.direccion} </p>
-                <p>Cliente: ${entrega.nombreCliente} </p>
+                <p>Direccion: ${element.direccion} </p>
+                <p>Cliente: ${element.nombreCliente} </p>
                 <p>Monto a pagar:  L.${entrega.montoPagar} </p>
                 <p>Estado de la orden:  ${entrega.estadoOrden} </p>
         </div>
@@ -53,6 +56,8 @@ renderizarEntregas();
         <button class="botonOrdenes" onclick="ordenRealizada(${id})"><i class="fa-solid fa-check"></i>Entregado</button>
             </div> 
     </div>`;
+    }
+    });
 });
         document.getElementById('ordenesDisponibles').style.display = "none";
         document.getElementById('entregasPendientes').style.display = "block";
@@ -75,12 +80,12 @@ renderizarEntregas();
         document.getElementById('centrarEntregas').innerHTML = '';
         ordenesDisponibles.forEach((entrega, id ) => {
             let productos='';
-            /*entrega.productos.forEach((producto, i) => {
+            entrega.productos.forEach((producto, i) => {
                 if (i>0) {
                     productos += ", "
                 }
-                productos += producto.valor+" "+producto.producto.nombreProducto;
-            });*/
+                productos += producto.cantidad+" "+producto.nombreProducto;
+            });
             
         document.getElementById('centrarEntregas').innerHTML += 
         `<div type="button" class="contentEntregas">
@@ -121,26 +126,33 @@ renderizarEntregas();
     });
         document.getElementById('centrarRealizadas').innerHTML = '';
         ordenesRealizdas.forEach(entrega => {
-           let productos='';
-           /* entrega.productos.forEach((producto, i) => {
-                if (i>0) {
-                    productos += ", "
-                }
-                productos += producto.valor+" "+producto.producto.nombreProducto;
-            });*/
+          entregas.forEach(element => {
+            if (element._id === entrega._id ) {    
+              let productos='';
+               element.productos.forEach((producto, i) => {
+                    if (i>0) {
+                        productos += ", "
+                    }
+                    productos += producto.cantidad+" "+producto.nombreProducto;
+                });
         document.getElementById('centrarRealizadas').innerHTML += 
         `<div type="button" class="contentEntregas">
             <div class="tituloEntregas">Entrega</div>
-                <div class="entrega">
+            <div class="entrega">
                 <div class="infoEntrega">
-                <p>Productos: ${productos} </p>
-                <p>Direccion: ${entrega.direccion} </p>
-                <p>Cliente: ${entrega.nombreCliente} </p>
-                <p>Monto a pagar:  L.${entrega.montoPagar} </p>
-        </div>
-                <button class="botonOrdenes" style="background-color: #fff; color:#0C1A26;" ><i class="fa-solid fa-check"></i> Entregado</button>
+                    <p>Productos: ${productos} </p>
+                    <p>Direccion: ${element.direccion} </p>
+                    <p>Cliente: ${element.nombreCliente} </p>
+                    <p>Monto a pagar:  L.${entrega.montoPagar} </p>
+                    <p>Estado de la orden:  ${entrega.estadoOrden} </p>
+            </div>
+            <button class="botonOrdenes" style="background-color: #fff; color:#0C1A26;" ><i class="fa-solid fa-check"></i> Entregado</button>
                 </div> 
         </div>`;
+        }
+        });
+                
+                
     });
         document.getElementById('ordenesDisponibles').style.display = "none";
         document.getElementById('entregasPendientes').style.display = "none";
