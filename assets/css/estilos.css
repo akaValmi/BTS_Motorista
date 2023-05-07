@@ -17,6 +17,14 @@ button{
     color: #ffffff;
     font-size: 14px;
 }
+.botonesOrden{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap-reverse;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
+}
 .botonOrdenes{
     background-color: #0C1A26;
     border: var(--bs-border-width) solid rgba(255, 255, 255, 0);
@@ -78,6 +86,7 @@ body {
     font-size: 12px;
     width: 85%;
     color: #0C1A26;
+    margin: 10px;
 }
 .masOpciones{
     display: grid;
